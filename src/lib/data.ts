@@ -97,7 +97,7 @@ export const extrasBlock: ExtrasBlock[] = [
 	},
 	{
 		title: 'My Apps',
-		description: 'SOS Holdings Company - Making niche micro-saases.',
+		description: 'SOS Holdings Company - Making niche micro-SaaS products.',
 		image: 'Apps.png',
 		link: 'https://linktr.ee/mcthaydt'
 	},

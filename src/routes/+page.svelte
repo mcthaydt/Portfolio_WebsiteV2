@@ -94,7 +94,7 @@
 <style>
 	.animate-fade-in {
 		opacity: 0;
-		transform: translateY(20px);
+		transform: translateY(-10px);
 		transition:
 			opacity 0.5s ease-out,
 			transform 0.5s ease-out;

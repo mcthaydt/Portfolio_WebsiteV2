@@ -2,14 +2,11 @@
 	import { onMount } from 'svelte';
 	import type { BusinessCardInfo } from '../lib/types';
 	import { calculateExperience } from '../lib/utils';
-
 	export let info: BusinessCardInfo;
 	let experience: string;
-
 	onMount(() => {
 		experience = calculateExperience(info.startDate);
 	});
-
 	const infoRows = [
 		{
 			left: info.title,
@@ -41,13 +38,15 @@
 					{name}
 				</h1>
 			{/each}
-			{#each [experience, 'Future: M.S. in Information Technology'] as badge}
-				<div
-					class="mt-4 bg-blue-500 text-white px-2 py-1 rounded-md text-sm mb-4 inline-block mr-2"
-				>
-					{badge}
+			<div class="my-4">
+				<!-- Added my-4 for spacing above and below -->
+				<div class="bg-blue-500 text-white px-2 py-1 rounded-md text-sm inline-block mr-2">
+					{experience}
 				</div>
-			{/each}
+				<div class="mt-2 bg-blue-500 text-white px-2 py-1 rounded-md text-sm inline-block mr-2">
+					Future: M.S. in Information Technology
+				</div>
+			</div>
 		</div>
 		{#each infoRows as row, i}
 			<div class="grid grid-cols-2">

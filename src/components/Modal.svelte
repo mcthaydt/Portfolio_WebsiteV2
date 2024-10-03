@@ -3,26 +3,32 @@
 	export let isOpen = false;
 	export let title = 'Modal Title';
 	let modalElement: HTMLDivElement;
+
 	function closeModal(): void {
 		isOpen = false;
 	}
+
 	function handleKeydown(event: KeyboardEvent): void {
 		if (event.key === 'Escape' && isOpen) {
 			closeModal();
 		}
 	}
+
 	function disableScroll(): void {
 		document.body.style.overflow = 'hidden';
 	}
+
 	function enableScroll(): void {
 		document.body.style.overflow = '';
 	}
+
 	onMount(() => {
 		return () => {
 			document.removeEventListener('keydown', handleKeydown);
 			enableScroll();
 		};
 	});
+
 	$: if (isOpen) {
 		document.addEventListener('keydown', handleKeydown);
 		setTimeout(() => modalElement?.focus(), 0);

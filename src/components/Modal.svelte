@@ -34,27 +34,31 @@
 </script>
 
 {#if isOpen}
-	<div class="fixed inset-0 bg-black bg-opacity-50 z-40 overflow-y-auto p-4">
-		<div class="flex min-h-screen items-center justify-center">
-			<div
-				bind:this={modalElement}
-				class="bg-white rounded-lg p-6 w-full max-w-md my-8 relative"
-				role="dialog"
-				aria-labelledby="modal-title"
-				aria-modal="true"
-				tabindex="-1"
-			>
-				<h2 id="modal-title" class="text-2xl font-bold mb-4">{title}</h2>
-				<div class="mb-6">
-					<slot></slot>
-				</div>
-				<div class="flex justify-end">
-					<button
-						on:click={closeModal}
-						class="px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300 transition-colors"
-					>
-						Close
-					</button>
+	<div class="fixed inset-0 z-40 overflow-hidden">
+		<div class="absolute inset-0 bg-black bg-opacity-50" on:click={closeModal}></div>
+		<div class="absolute inset-0 overflow-y-auto">
+			<div class="flex min-h-full items-center justify-center p-4">
+				<div
+					bind:this={modalElement}
+					class="w-full max-w-md bg-white rounded-lg p-6 relative"
+					style="max-height: calc(100vh - 2rem); overflow-y: auto;"
+					role="dialog"
+					aria-labelledby="modal-title"
+					aria-modal="true"
+					tabindex="-1"
+				>
+					<h2 id="modal-title" class="text-2xl font-bold mb-4">{title}</h2>
+					<div class="mb-6">
+						<slot></slot>
+					</div>
+					<div class="flex justify-end">
+						<button
+							on:click={closeModal}
+							class="px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300 transition-colors"
+						>
+							Close
+						</button>
+					</div>
 				</div>
 			</div>
 		</div>
